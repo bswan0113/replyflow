@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReplyFlow — 고객 문의 답변 초안</title>
+  <style>
+    :root { color-scheme: light; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #162033; background: #f4f7fb; }
+    * { box-sizing: border-box; } body { margin: 0; } main { width: min(960px, calc(100% - 32px)); margin: 48px auto; }
+    header { margin-bottom: 26px; } h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: -0.06em; margin: 0 0 12px; } h1 span { color: #5b4bdf; }
+    p { color: #526176; line-height: 1.65; } .tag { color: #5b4bdf; font-weight: 750; letter-spacing: .04em; font-size: .78rem; }
+    .card { background: #fff; box-shadow: 0 16px 38px #1e2a4514; border: 1px solid #e7ebf2; border-radius: 18px; padding: clamp(20px, 4vw, 36px); }
+    label { display: block; font-weight: 700; margin: 20px 0 8px; } select, textarea, button { width: 100%; font: inherit; border-radius: 10px; } select, textarea { border: 1px solid #d8dfeb; padding: 13px; background: #fff; color: #162033; } textarea { min-height: 144px; resize: vertical; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } button { border: 0; padding: 15px; background: #5b4bdf; color: #fff; cursor: pointer; font-weight: 800; margin-top: 22px; } button:hover { background: #493ac8; }
+    #result { display: none; margin-top: 28px; border-top: 1px solid #e7ebf2; padding-top: 22px; } #result.show { display: block; } pre { white-space: pre-wrap; background: #f7f8fc; padding: 18px; border-radius: 10px; line-height: 1.65; font-family: inherit; }
+    .note { font-size: .85rem; margin-top: 24px; } @media (max-width: 600px) { main { margin: 26px auto; } .grid { grid-template-columns: 1fr; gap: 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><div class="tag">REPLYFLOW · MVP</div><h1>문의는 쌓이고,<br><span>답변은 빨라집니다.</span></h1><p>고객 문의를 붙여 넣으면 바로 보낼 답변 초안과 내부 후속조치를 정리합니다.</p></header>
+    <section class="card">
+      <div class="grid">
+        <div><label for="business">업종</label><select id="business"><option>온라인 쇼핑몰</option><option>예약·서비스업</option><option>교육·클래스</option><option>기타 소상공인</option></select></div>
+        <div><label for="tone">답변 톤</label><select id="tone"><option>친절하고 간결하게</option><option>정중하고 공식적으로</option><option>따뜻하고 공감 있게</option></select></div>
+      </div>
+      <label for="inquiry">고객 문의</label><textarea id="inquiry" placeholder="예: 주문한 상품이 아직 안 왔어요. 언제 받을 수 있나요?"></textarea>
+      <button id="generate">답변 초안 만들기</button>
+      <div id="result"><label>고객에게 보낼 답변</label><pre id="reply"></pre><label>내부 후속조치</label><pre id="action"></pre><button id="copy">답변 복사</button></div>
+      <p class="note">현재는 공개 검증용 데모입니다. 고객 개인정보는 입력하지 마세요.</p>
+    </section>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    $("generate").onclick = () => {
+      const text = $("inquiry").value.trim();
+      if (!text) { $("inquiry").focus(); return; }
+      const tone = $("tone").value;
+      const shipping = /배송|도착|언제.*받|안.*왔/.test(text);
+      const refund = /환불|취소|반품/.test(text);
+      let subject = shipping ? "배송 관련 문의" : refund ? "환불·취소 문의" : "문의";
+      let detail = shipping ? "주문 및 배송 상태를 확인한 뒤, 가능한 한 빠르게 안내드리겠습니다." : refund ? "주문 상태와 처리 가능 여부를 확인해 신속히 도와드리겠습니다." : "문의 내용을 확인한 뒤, 정확한 안내를 드리겠습니다.";
+      $("reply").textContent = `안녕하세요. 문의 주셔서 감사합니다.\n\n${subject}와 관련해 불편을 드려 죄송합니다. ${detail}\n\n확인에 필요한 주문자 성함 또는 주문번호를 남겨 주시면 빠르게 확인하겠습니다. 감사합니다.`;
+      $("action").textContent = `1. 문의 분류: ${subject}\n2. 확인할 정보: 주문번호·결제일·연락처\n3. 담당자 액션: 주문/예약 시스템에서 상태 확인 후 고객에게 재안내\n4. 권장 응답 목표: 영업시간 내 2시간 이내\n5. 적용 톤: ${tone}`;
+      $("result").classList.add("show");
+    };
+    $("copy").onclick = async () => { await navigator.clipboard.writeText($("reply").textContent); $("copy").textContent = "복사됨"; setTimeout(() => $("copy").textContent = "답변 복사", 1200); };
+  </script>
+</body>
+</html>
