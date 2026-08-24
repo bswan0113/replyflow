@@ -1,0 +1,20 @@
+# 신규 프로젝트 생성 시 이 파일을 projects/<slug>/project.yaml로 복제해서 채운다.
+# status는 항상 CLAUDE.md의 파이프라인 단계 번호(0~10)와 일치시킨다.
+
+title: ""                    # 작품 제목 (가제 가능)
+slug: ""                     # 디렉토리명과 동일, kebab-case
+genre: ""                    # 예: 현대판타지, 로맨스판타지 등
+platform:
+  target: []                 # 후보 플랫폼 목록 (5단계에서 채움)
+  confirmed: null            # 최종 선정 플랫폼 (5단계 완료 시 확정)
+status: 0                    # 현재 진행 중인 파이프라인 단계 번호
+stage_history:                # 단계 전환 로그, 단계를 넘길 때마다 항목 추가
+  - stage: 0
+    entered_at: ""            # ISO 8601, 예: 2026-08-24T00:00:00+09:00
+    note: ""
+style_guide:
+  pov: ""                     # 시점 (1인칭/3인칭 등)
+  tone: ""                    # 문체 톤
+  chapter_length_chars: null  # 회차 목표 분량(자수)
+created_at: ""
+updated_at: ""
