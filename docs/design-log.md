@@ -238,4 +238,4 @@
 
 **개선 반영**: 두 `SKILL.md`의 절차 요약에 AI 냄새 판정/재확인 라운드 단계를 추가하고 번호를 재정렬.
 
-**완성도 재평가 (2차)**: (반영 후 이어서 기록)
+**완성도 재평가 (2차, `harness-reviewer` 실호출)**: 통과. 4항목 모두 통과 — 두 `SKILL.md`의 절차 요약이 대응하는 `docs/phases/06-writing.md`/`07-publish-assets.md`와 단계 수·순서·게이트 내용까지 1:1로 대응함을 확인, 번호 재정렬 과정에서 다른 곳에 부수 손상 없음, `publish-assistant.md`/`ai-smell.md`와도 정합.
