@@ -169,4 +169,4 @@
 
 **최종 승인안**: `docs/phases/07-publish-assets.md`, `.claude/skills/novel-publish-assets/SKILL.md`, `.claude/agents/publish-assistant.md` 신규 생성. `CLAUDE.md` 7행 갱신.
 
-**완성도 재평가**: (구현 완료 후 이어서 기록)
+**완성도 재평가** (`harness-reviewer` 실호출): 통과. 4항목 모두 통과 — 게이트가 재조사성공/실패시 별도동의/미동의중단 3갈래로 명확히 구현됨, `verified` 미검증 시 `status`가 7에 유지되고 8로 올라가지 않음을 확인, "8단계와의 연결" 절 확인, `publish-assistant`의 웹조사 안 함 원칙이 일관됨, `novel-publish-assets/SKILL.md`가 기존 진입 스킬들과 동일 패턴, `CLAUDE.md` 7행 서술 형식 일치. 이전 반려 사유(일관성) 완전히 해소.
