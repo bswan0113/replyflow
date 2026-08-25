@@ -148,4 +148,4 @@
 
 **최종 승인안**: `docs/phases/06-writing.md`, `.claude/skills/novel-write/SKILL.md` 신규 생성. `.claude/agents/prose-writer.md`/`editor-critic.md`는 만들지 않음 — 집필·교정은 활성 세션이 직접 수행. `CLAUDE.md` 6행 갱신.
 
-**완성도 재평가**: (구현 완료 후 이어서 기록)
+**완성도 재평가** (`harness-reviewer` 실호출): 통과. 4항목 모두 통과 — 아카이빙 규칙이 임계값(40화)·범위·경로·활성파일 잔존내용까지 구체적으로 명시돼 실행 가능함을 확인, 떡밥 추적 표가 아카이브와 무관하게 항상 유지됨을 확인, 자기교정 체크리스트가 최소요건으로 명문화됨을 확인, `novel-write/SKILL.md`가 기존 5개 진입 스킬과 동일 패턴, `CLAUDE.md` 6행 서술 형식 일치, `prose-writer`/`editor-critic` 미생성이 승인안과 정확히 일치. 이전 반려 사유(생산성) 완전히 해소.
