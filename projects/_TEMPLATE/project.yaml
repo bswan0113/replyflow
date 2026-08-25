@@ -5,8 +5,11 @@ title: ""                    # 작품 제목 (가제 가능)
 slug: ""                     # 디렉토리명과 동일, kebab-case
 genre: ""                    # 예: 현대판타지, 로맨스판타지 등
 platform:
-  target: []                 # 후보 플랫폼 목록 (5단계에서 채움)
+  target: []                 # 후보 플랫폼 목록 (1단계에서 초안, 5단계에서 재확인)
+  provisional: null          # 1단계 가결정 플랫폼 (5단계에서 재검토 대상)
   confirmed: null            # 최종 선정 플랫폼 (5단계 완료 시 확정)
+business_model: null         # hobby | game_adaptation | paid_serial — 1단계 가결정, 5단계 확정
+length_type: null            # serial | novella — 1단계 가결정, 5단계 확정
 status: 0                    # 현재 진행 중인 파이프라인 단계 번호
 stage_history:                # 단계 전환 로그, 단계를 넘길 때마다 항목 추가
   - stage: 0

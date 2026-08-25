@@ -51,8 +51,11 @@ title: ""              # 작품 제목 (가제 가능)
 slug: ""                # 디렉토리명과 동일, kebab-case
 genre: ""                # 예: 현대판타지, 로맨스판타지 등
 platform:
-  target: []              # 후보 플랫폼 목록 (5단계에서 채움)
+  target: []              # 후보 플랫폼 목록 (1단계에서 초안, 5단계에서 재확인)
+  provisional: null        # 1단계 가결정 플랫폼 (5단계에서 재검토 대상)
   confirmed: null          # 최종 선정 플랫폼 (5단계 완료 시 확정)
+business_model: null       # hobby | game_adaptation | paid_serial — 1단계 가결정, 5단계 확정
+length_type: null          # serial | novella — 1단계 가결정, 5단계 확정
 status: 0                 # 현재 진행 중인 파이프라인 단계 번호 (0~10)
 stage_history:            # 단계 전환 로그
   - stage: 0
@@ -68,6 +71,7 @@ updated_at: ""
 
 - `status`는 항상 파이프라인 표(CLAUDE.md)의 단계 번호와 일치시킨다.
 - 단계를 넘어갈 때마다 `stage_history`에 항목을 추가하고 `status`를 갱신한다.
+- `stage_history`의 각 항목은 **완료한 단계 번호**를 기록한다. 그 시점의 `status`는 이미 **다음 단계 번호**로 갱신돼 있을 수 있다 (예: 1단계를 완료하면 `stage_history`에 `stage: 1` 항목이 추가되고, `status`는 3으로 넘어간다). 즉 `status`와 `stage_history` 마지막 항목의 `stage` 값이 다른 것은 정상이다.
 - `platform.confirmed`가 정해지기 전까지 7·8단계(게시 관련) 작업은 시작하지 않는다.
 
 ## 컨벤션
