@@ -14,7 +14,7 @@
 | 5 | 플랫폼 선정 | 자동 재검토(`platform-scout`) + 단일 go/no-go | 1단계 가결정 확정(`platform.confirmed`/`verified`) + `platform-notes.md` | 완료 |
 | 6 | 집필 | 집필(단일 세션, 서브에이전트 위임 없음) + 필요시 `worldbuilder-update`/`plot-architect-update`/`character-designer-update` | 회차 원고 + 누적 요약(`summaries.md`, 떡밥 추적 표 포함) | 완료 |
 | 7 | 게시 필수요소 | 자동 생성(`publish-assistant`) + 단일 go/no-go (`platform.verified=false`면 별도 동의 게이트) | 소개글/태그/표지문구(`essentials.md`) | 완료 |
-| 8 | 게시 | 스킬 단독(서브에이전트 없음), `platform.verified` 게이트 + 브라우저 유무 조건부(직접 입력/체크리스트) | `publish-record.md`, 최종 클릭은 항상 사용자 | 진행 중 |
+| 8 | 게시 | 스킬 단독(서브에이전트 없음), `platform.verified` 게이트 + 브라우저 유무 조건부(직접 입력/체크리스트) | `publish-record.md`, 최종 클릭은 항상 사용자 | 완료 |
 | 9 | 관리 | (스킬) | `stats.md` | 미착수 |
 | 10 | 피드백 | (스킬) | 피드백 로그, 1·3단계 순환 | 미착수 |
 
