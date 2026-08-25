@@ -46,3 +46,4 @@
 - `.claude/agents/*.md`는 Claude Code 서브에이전트 정의. Codex에서는 같은 역할을 `docs/phases/*.md`의 지침을 사람이 프롬프트로 넘겨 재현한다.
 - `.claude/skills/*/SKILL.md`는 단계 진입점(슬래시 커맨드)이며, 실제 작업 지침은 `docs/phases/*.md`를 참조하도록 얇게 유지한다.
 - 실제 소설 프로젝트는 `projects/<slug>/`에 생성하며, `projects/_TEMPLATE/`을 복제해서 시작한다.
+- 6단계(집필)·7단계(게시 필수요소)에서 생성되는 텍스트는 `docs/style/ai-smell.md` 기준으로 통과 판정을 받아야 한다 (통과할 때까지 반려·재작성, 단 최대 3회 상한 후 사용자 확인으로 전환).
