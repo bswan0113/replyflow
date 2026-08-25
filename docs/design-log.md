@@ -125,4 +125,6 @@
 
 **최종 승인안**: `docs/phases/05-platform.md`, `.claude/skills/novel-platform/SKILL.md`, `.claude/agents/platform-scout.md` 신규 생성. `project.yaml`/`00-foundation.md`에 `platform.verified` 필드 추가. `CLAUDE.md` 5행 갱신.
 
-**완성도 재평가**: (구현 완료 후 이어서 기록)
+**완성도 재평가** (`harness-reviewer` 실호출): 통과. 4항목 모두 통과 — `platform-scout.md`의 frontmatter/본문/tools가 "웹조사 안 함, 판단만" 역할로 완전히 일관됨을 확인, `05-platform.md` 절차상 조사(호출 세션)와 판단(platform-scout)이 명확히 분리됨, `novel-platform/SKILL.md`가 기존 4개 진입 스킬과 동일 패턴, `platform.verified=false` 시 7·8단계 진입 전 재검증 요구 문구 확인, `project.yaml`/`00-foundation.md` 스키마 설명 완전 동기화. 이전 반려 사유(실행가능성·일관성) 모두 해소.
+
+**부가 발견**: `CLAUDE.md`의 "상태" 컬럼이 1단계는 완성도 재평가를 통과했음에도 "진행 중"으로 남아있어 표기 기준이 불명확하다는 지적. 5단계 검토 범위 밖이지만 반영: 1·5행을 "완료"로 정정하고, "상태" 컬럼이 하네스 메타 빌드 진행상황(프로젝트별 `project.yaml`의 `status`와는 별개)을 가리킨다는 설명을 `CLAUDE.md`에 추가.
