@@ -105,3 +105,24 @@
 **최종 승인안**: `docs/phases/04-characters.md`, `.claude/skills/novel-characters-init/SKILL.md`, `.claude/agents/character-designer-update.md` 신규 생성. `CLAUDE.md` 4행을 3행과 동일한 서술 형식으로 갱신.
 
 **완성도 재평가** (`harness-reviewer` 실호출): 통과. 4항목 모두 통과 — `04-characters.md`가 `03-world.md`/`03-plot.md`와 문단 구조 1:1 대응, `character-designer-update.md`가 `worldbuilder-update.md`와 frontmatter·출력형식·승인문구까지 동일 패턴, `novel-characters-init/SKILL.md`도 `novel-world-init`과 동형, `CLAUDE.md` 4행이 3행과 서술 형식 일치, `design-log.md` 최종승인안과 실제 생성 파일 목록 정확히 일치. 새로운 충돌 없음.
+
+---
+
+## 5단계 — 플랫폼 선정
+
+**제안된 작업방식**: "여긴 내가 개입할 부분이 없을 듯. 4단계까지 끝나면 기초 기획은 나온 거니까, 자동으로 진입해서 프로젝트 진행 여부만 결정해주면 될 것 같은데?" — 세부 항목(플랫폼/분량/사업성)을 재협상하지 않고, 기존 자료 기반 자동 재검토 후 사용자에게는 단일 go/no-go만 요청.
+
+**평가 결과 (1차, `harness-reviewer` 호출)**:
+
+1. 목적적합성: 통과 — 자동 재검토+단일 go/no-go 구조가 1단계에서 합의한 "5단계에서 재검토해 확정"의 취지를 형식적으로 흘려보내지 않음.
+2. 실행가능성: 반려 — (a) `platform-scout`의 tools(Read/Grep/Glob)로는 웹 조사가 불가능한데 절차는 "실제로 조사한다"고 명시해 모순. (b) "자동 진입" 메커니즘이 불명확 — 세션이 끊긴 뒤 재진입할 경로(전용 스킬 등)가 없음.
+3. 생산성: 통과 — 항목별 재협상을 단일 go/no-go로 압축하면 승인 부담이 실제로 줄어듦 (단, 2번 결함 해소가 전제).
+4. 일관성: 반려 — 1~4단계 모두 예외 없이 전용 `SKILL.md` 진입점을 뒀는데 이번만 빠뜨림. (참고: init/update 이원구조를 적용하지 않은 판단 자체는 "한 번 확정하는 성격"이라는 근거가 있어 통과로 인정됨.)
+
+**종합 판정**: 반려 (실행가능성·일관성).
+
+**개선 반영**: 웹 조사는 호출 세션이 직접 수행(가능한 경우)하고, `platform-scout`은 조사 결과+기존 문서를 입력받아 "확정/조정 필요"만 판단하는 순수 읽기전용 역할로 재조정(tools는 Read/Grep/Glob 유지). `.claude/skills/novel-platform/SKILL.md` 신설로 기존 4단계와 동일한 진입 패턴 확보. 조사를 생략한 경우 `platform.verified: false` 플래그를 남기고, 7·8단계(게시) 진입 전 재검증을 요구하는 문구를 `05-platform.md`에 명시.
+
+**최종 승인안**: `docs/phases/05-platform.md`, `.claude/skills/novel-platform/SKILL.md`, `.claude/agents/platform-scout.md` 신규 생성. `project.yaml`/`00-foundation.md`에 `platform.verified` 필드 추가. `CLAUDE.md` 5행 갱신.
+
+**완성도 재평가**: (구현 완료 후 이어서 기록)

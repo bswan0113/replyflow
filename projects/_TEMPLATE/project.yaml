@@ -8,6 +8,7 @@ platform:
   target: []                 # 후보 플랫폼 목록 (1단계에서 초안, 5단계에서 재확인)
   provisional: null          # 1단계 가결정 플랫폼 (5단계에서 재검토 대상)
   confirmed: null            # 최종 선정 플랫폼 (5단계 완료 시 확정)
+  verified: null             # 연재규칙을 실제로 조사했으면 true, 조사 없이 확정했으면 false (5단계에서 채움)
 business_model: null         # hobby | game_adaptation | paid_serial — 1단계 가결정, 5단계 확정
 length_type: null            # serial | novella — 1단계 가결정, 5단계 확정
 status: 0                    # 현재 진행 중인 파이프라인 단계 번호
