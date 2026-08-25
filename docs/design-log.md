@@ -234,4 +234,8 @@
 
 **최종 승인안**: `docs/style/ai-smell.md` 신규 생성. `docs/phases/06-writing.md`(자기교정 5번째 항목), `docs/phases/07-publish-assets.md`(AI 냄새 재확인 라운드 절차 추가, 번호 재정렬), `.claude/agents/publish-assistant.md`(자가점검 절차·출력형식 추가) 수정. `CLAUDE.md` 컨벤션 섹션에 한 줄 추가(새 파이프라인 단계가 아니므로 표는 갱신 안 함).
 
-**완성도 재평가**: (구현 완료 후 이어서 기록)
+**완성도 재평가 (1차, `harness-reviewer` 실호출)**: 반려 (일관성만). `ai-smell.md`의 반복상한·예시·인용근거·자기평가 한계 명시, `publish-assistant.md`의 호출당 1회 반환 원칙 등 목적적합성/실행가능성/생산성은 모두 통과. 다만 `.claude/skills/novel-write/SKILL.md`, `.claude/skills/novel-publish-assets/SKILL.md`의 "절차 요약"이 `docs/phases/06-writing.md`/`07-publish-assets.md`에 새로 추가한 AI 냄새 게이트를 반영하지 못한 채 남아있어, 실제 진입점(슬래시 커맨드)만 보고 작업하면 게이트가 통째로 스킵될 위험 — 새로 만든 일관성 결함.
+
+**개선 반영**: 두 `SKILL.md`의 절차 요약에 AI 냄새 판정/재확인 라운드 단계를 추가하고 번호를 재정렬.
+
+**완성도 재평가 (2차)**: (반영 후 이어서 기록)
