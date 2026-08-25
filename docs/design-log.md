@@ -59,3 +59,24 @@
 **종합 판정**: 통과. 4항목 모두 통과 — 승인된 산출물이 빠짐없이 생성됐고, 옛 2단계용 별도 진입점이 남아있지 않으며, `idea-evaluator`/`harness-reviewer` 역할 구분이 명확하고, 이전 반려 사유 4가지가 모두 해소됨을 확인.
 
 사소한 개선 제안 반영: `stage_history`의 `stage`는 완료한 단계, `status`는 다음 단계를 가리킬 수 있다는 점을 `00-foundation.md`에 명시.
+
+---
+
+## 3단계 — 세계관·플롯
+
+**제안된 작업방식**: 한 번에 완벽한 설계를 기대하지 않음. 초기설계는 Claude/Codex 중 성과 좋은 쪽이 자유롭게 진행하거나 사용자가 뼈대를 직접 던지는 등 형식 제약 없이 진행. 세계관은 특히 보완·수정이 잦을 것으로 예상되므로 초기설계용과 확장(보충/수정)용 진입점을 분리해, 집필 등 다른 단계 세션에서도 확장 쪽을 자유롭게 호출 가능하게 함. 단, 실제 변경 반영에는 항상 사용자 승인 전제. 후속 확인에서 플롯(전체아크·회차별비트)에도 동일한 이원화를 적용하기로 함.
+
+**평가 결과 (1차, `harness-reviewer` 호출)**:
+
+1. 목적적합성: 통과 — 세계관/플롯 모두 초안 확립 + 지속적 보완이라는 실제 요구에 부합.
+2. 실행가능성: 통과 — "쓰기 권한 없는 제안 전용 서브에이전트 + 승인 후 호출 세션이 직접 반영" 구조는 `idea-evaluator`에서 이미 검증된 패턴 재사용.
+3. 생산성: 통과 — 제안 전용 서브에이전트가 사용자의 문서 재검토 수고를 줄이고, `project.yaml` 스키마 확장 없이 `changelog.md`만 두어 과설계를 억제.
+4. 일관성: 반려 — 최초 구체화안이 실질 절차를 `SKILL.md`에 직접 담으려 해서 "스킬은 얇게, 실제 지침은 `docs/phases/*.md`에" 컨벤션 및 `novel-idea/SKILL.md` 선례와 충돌. `docs/phases/03-*.md` 신설 계획이 누락돼 있었음.
+
+**종합 판정**: 반려 (일관성 항목만).
+
+**개선 반영**: `docs/phases/03-world.md`, `docs/phases/03-plot.md`를 신설해 초기설계 최소요건과 확장 절차(트리거·제안 형식·승인·changelog 기록)를 담고, `SKILL.md`는 `novel-idea`와 같은 형식으로 얇게 재작성.
+
+**최종 승인안**: 세계관·플롯 각각 초기설계(Init, 자유형식)와 확장(Update, 쓰기권한 없는 제안 전용 서브에이전트)을 분리. 생성 파일: `docs/phases/03-world.md`, `docs/phases/03-plot.md`, `.claude/skills/novel-world-init/SKILL.md`, `.claude/skills/novel-plot-init/SKILL.md`, `.claude/agents/worldbuilder-update.md`, `.claude/agents/plot-architect-update.md`, `docs/phases/00-foundation.md`에 세계관/플롯 변경 승인원칙 한 줄 추가(단계 번호 지칭 없는 일반형), `CLAUDE.md` 3행 갱신.
+
+**완성도 재평가**: (구현 완료 후 이어서 기록)

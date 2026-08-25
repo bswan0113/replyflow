@@ -73,6 +73,7 @@ updated_at: ""
 - 단계를 넘어갈 때마다 `stage_history`에 항목을 추가하고 `status`를 갱신한다.
 - `stage_history`의 각 항목은 **완료한 단계 번호**를 기록한다. 그 시점의 `status`는 이미 **다음 단계 번호**로 갱신돼 있을 수 있다 (예: 1단계를 완료하면 `stage_history`에 `stage: 1` 항목이 추가되고, `status`는 3으로 넘어간다). 즉 `status`와 `stage_history` 마지막 항목의 `stage` 값이 다른 것은 정상이다.
 - `platform.confirmed`가 정해지기 전까지 7·8단계(게시 관련) 작업은 시작하지 않는다.
+- 세계관/플롯 변경 제안은 어느 단계의 세션에서 호출되든, 파일 수정 전 반드시 사용자 승인을 거친다.
 
 ## 컨벤션
 
