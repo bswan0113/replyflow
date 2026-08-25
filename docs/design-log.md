@@ -79,4 +79,10 @@
 
 **최종 승인안**: 세계관·플롯 각각 초기설계(Init, 자유형식)와 확장(Update, 쓰기권한 없는 제안 전용 서브에이전트)을 분리. 생성 파일: `docs/phases/03-world.md`, `docs/phases/03-plot.md`, `.claude/skills/novel-world-init/SKILL.md`, `.claude/skills/novel-plot-init/SKILL.md`, `.claude/agents/worldbuilder-update.md`, `.claude/agents/plot-architect-update.md`, `docs/phases/00-foundation.md`에 세계관/플롯 변경 승인원칙 한 줄 추가(단계 번호 지칭 없는 일반형), `CLAUDE.md` 3행 갱신.
 
-**완성도 재평가**: (구현 완료 후 이어서 기록)
+**완성도 재평가** (`harness-reviewer` 실호출, 1차):
+
+**종합 판정**: 반려 (일관성 항목만). 목적적합성/실행가능성/생산성 모두 통과, 이전 반려 사유(SKILL.md 비대화, 03-*.md 누락)도 완전히 해소 확인. 다만 **새 일관성 문제**를 발견: `00-foundation.md`의 "폴더↔단계" 매핑 표(0단계 때 작성된 초안)가 이번 3단계 최종 설계와 어긋남 — `02-world/` 행이 "3(세계관·플롯)"으로 돼 있어 플롯도 이 폴더에 있는 것처럼 읽히지만 실제로는 `worldbuilding.md`만 여기 있고, `04-outline/` 행은 "회차별 비트 세부화"만 언급해 실제로 `plot.md`에 함께 들어가는 "전체 아크 요약"이 빠져 있었음.
+
+**개선 반영**: `00-foundation.md` 폴더 매핑 표를 `02-world/` → "3(세계관)", `04-outline/` → "3(플롯): 전체 아크 요약 + 회차별 비트, 5(플랫폼)의 선정 결과 메모"로 수정.
+
+**완성도 재평가 (2차)**: (표 수정 반영 후 이어서 기록)
