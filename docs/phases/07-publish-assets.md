@@ -1,0 +1,32 @@
+# 7단계 — 게시 필수요소
+
+## 목표
+
+소개글(플랫폼용 시놉시스)·태그·표지문구 초안을 자동으로 생성하고, 사용자에게는 항목별 재협상이 아닌 단일 go/no-go 확정만 요청한다. 5단계(플랫폼 선정)에서 세운 원칙 — `platform.verified`가 `false`인 채로는 7·8단계에 진입해서는 안 된다 — 를 그대로 지킨다. 이 문서에서 말하는 "진입 금지"는 절대 우회가 아니라 **명시적 게이트**를 뜻한다: 미검증 상태로 계속하려면 사용자가 그 사실을 알고 별도로 동의해야 하고, 동의했더라도 `platform.verified`가 여전히 `false`인 한 `status`는 8로 올라가지 않는다.
+
+## 진입
+
+`.claude/skills/novel-publish-assets/SKILL.md`를 호출한다.
+
+## 절차
+
+1. `projects/<slug>/01-idea/synopsis.md`, `02-world/worldbuilding.md`, `03-characters/characters.md`, `04-outline/plot.md`, `04-outline/platform-notes.md`를 읽는다. 회차가 있다면 `05-manuscript/summaries.md`도 읽어 문체를 참고한다.
+2. **검증 상태 확인 (게이트)**: `project.yaml`의 `platform.verified`를 확인한다.
+   - `true`면 3번으로 진행한다.
+   - `false`면, 가능한 경우(로컬 세션, 브라우저 접근 있음) 5단계와 동일하게 확정 플랫폼의 소개글/태그/표지 형식 제약(글자수 등)을 직접 재조사한다.
+     - 재조사에 성공했다면 `project.yaml`의 `platform.verified`를 `true`로 갱신하고 3번으로 진행한다.
+     - 재조사가 불가능하거나 실패했다면, **여기서 멈추고 사용자에게 별도로 명시적 동의를 구한다**(3~5번의 초안 승인 go/no-go와는 별개의 질문이다): "연재규칙이 미검증 상태입니다(`platform.verified: false`). 이 상태로는 원래 7·8단계에 진입할 수 없습니다. 그래도 보수적 기본값(예: 소개글 500자 내외, 태그 10개 내외)으로 게시자료 초안만 만들어볼까요? (실제 게시는 재검증 전까지 불가합니다)" 사용자가 동의하지 않으면 여기서 절차를 중단한다. 동의하면 "미검증 예외 진행" 상태로 3번으로 넘어간다.
+3. `publish-assistant` 서브에이전트를 호출한다(읽기전용, tools: Read/Grep/Glob만 — 웹조사를 하지 않는다. 이미 모은 자료와, 미검증 예외 진행이라면 보수적 기본값을 프롬프트로 전달한다). 산출: 제목 후보 여러 개, 소개글, 태그 목록, 표지문구/카피.
+4. 호출 세션이 이 초안을 사용자에게 보여주고 "이대로 확정할지" 단일 go/no-go를 묻는다. 미검증 예외 진행이었다면 이 화면에도 그 사실을 다시 표시한다. 사용자가 수정을 원하면 예외적으로 세부 조정한다.
+5. 승인되면 `projects/<slug>/06-publish/essentials.md`에 저장한다(미검증 기준이었다면 그 사실도 함께 기록).
+6. `project.yaml` 갱신:
+   - `platform.verified`가 `true`(2번에서 재조사 성공했거나 원래부터 true)라면: `stage_history`에 `stage: 7` 기록, `status: 8`로 갱신.
+   - `platform.verified`가 여전히 `false`(미검증 예외 진행)라면: `stage_history`에 `stage: 7, note: "verified=false 상태로 예외 진행, 8단계(실제 게시) 진입 전 재검증 필수"` 기록. **`status`는 7에 그대로 둔다 — 8로 올리지 않는다.**
+
+## 8단계와의 연결
+
+8단계(게시)를 설계할 때는 진입 시점에 `platform.verified`를 반드시 재확인하는 절차를 넣어야 한다. `false`인 채로 8단계 스킬이 시작되면, 실제 게시를 진행하기 전에 재검증을 요구해야 한다 — 이 문서의 게이트가 7단계에서 걸어둔 제동을 8단계에서도 이어받는다.
+
+## 산출물
+
+- `projects/<slug>/06-publish/essentials.md`

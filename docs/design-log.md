@@ -149,3 +149,24 @@
 **최종 승인안**: `docs/phases/06-writing.md`, `.claude/skills/novel-write/SKILL.md` 신규 생성. `.claude/agents/prose-writer.md`/`editor-critic.md`는 만들지 않음 — 집필·교정은 활성 세션이 직접 수행. `CLAUDE.md` 6행 갱신.
 
 **완성도 재평가** (`harness-reviewer` 실호출): 통과. 4항목 모두 통과 — 아카이빙 규칙이 임계값(40화)·범위·경로·활성파일 잔존내용까지 구체적으로 명시돼 실행 가능함을 확인, 떡밥 추적 표가 아카이브와 무관하게 항상 유지됨을 확인, 자기교정 체크리스트가 최소요건으로 명문화됨을 확인, `novel-write/SKILL.md`가 기존 5개 진입 스킬과 동일 패턴, `CLAUDE.md` 6행 서술 형식 일치, `prose-writer`/`editor-critic` 미생성이 승인안과 정확히 일치. 이전 반려 사유(생산성) 완전히 해소.
+
+---
+
+## 7단계 — 게시 필수요소
+
+**제안된 작업방식**: "이건 알아서 진행, 내가 컨펌만 내리는 방식" — 5단계와 같은 자동 생성 + 단일 go/no-go 패턴.
+
+**평가 결과 (1차, `harness-reviewer` 호출)**:
+
+1. 목적적합성: 통과 — 소개글/태그/표지문구 생성 + 사용자 확정이라는 목표를 빠짐없이 다룸.
+2. 실행가능성: 통과 — `publish-assistant`를 읽기전용(Read/Grep/Glob)으로 못박고 웹조사는 호출 세션이 담당하도록 분리, 5단계에서 지적됐던 모순 없음.
+3. 생산성: 통과 — 항목별 재협상 없이 단일 go/no-go로 압축, 새 스키마 필드 없이 과설계 회피.
+4. 일관성: 반려 — `05-platform.md`의 "`platform.verified`가 `false`인 채로 7·8단계에 진입해서는 안 된다"는 명시적 규칙을 이번 초안이 사실상 우회함(막는 게 아니라 라벨만 붙이고 계속 진행, `status: 8`까지 그대로 올려버림).
+
+**종합 판정**: 반려 (일관성).
+
+**개선 반영**: `platform.verified=false`일 때 재조사를 먼저 시도하고, 실패 시 초안 승인과는 별개의 **명시적 동의 게이트**("미검증 상태로도 진행할지")를 사용자에게 묻도록 추가. 미검증 예외 진행 시 `status`는 8로 올리지 않고 7에 유지, `stage_history`에 재검증 필요 사실을 기록. 8단계 설계 시 이 게이트를 이어받아야 한다는 연결고리를 문서에 명시.
+
+**최종 승인안**: `docs/phases/07-publish-assets.md`, `.claude/skills/novel-publish-assets/SKILL.md`, `.claude/agents/publish-assistant.md` 신규 생성. `CLAUDE.md` 7행 갱신.
+
+**완성도 재평가**: (구현 완료 후 이어서 기록)
