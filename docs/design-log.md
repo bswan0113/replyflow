@@ -211,4 +211,4 @@
 
 **최종 승인안**: `docs/phases/09-feedback.md`, `.claude/skills/novel-feedback/SKILL.md`, `.claude/agents/feedback-analyst.md` 신규 생성. `CLAUDE.md` 9행 갱신, 10행은 "9단계에 통합 — 별도 진입점 없음"으로 표기(번호 재배치 없음).
 
-**완성도 재평가**: (구현 완료 후 이어서 기록)
+**완성도 재평가** (`harness-reviewer` 실호출): 통과. 4항목 모두 통과 — "1·3·4단계 순환" 정정이 실제로 반영됨, 반복 재진입 시 status/stage_history 처리가 전용 절로 명시됨, `feedback-analyst`가 기존 3개 update 서브에이전트와 역할 구분이 frontmatter/본문 양쪽에서 일관됨, `novel-feedback/SKILL.md`가 기존 진입 스킬들과 동일 패턴, `CLAUDE.md` 9·10행이 서술 형식·흡수 표기 모두 선례와 일치, 정량 수집의 조건부 폴백이 5·7·8단계와 일치.
