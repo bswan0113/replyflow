@@ -12,7 +12,7 @@
 | 3 | 세계관·플롯 | 자유형식 초기설계 + `worldbuilder-update`/`plot-architect-update`(확장, 언제든 호출 가능) | 세계관 문서 + 전체 아크·회차별 비트(최소 10화) + 변경 changelog | 완료 |
 | 4 | 캐릭터 생성 | 자유형식 초기설계 + `character-designer-update`(확장, 언제든 호출 가능) | 캐릭터 프로필 + 관계도 + 변경 changelog | 완료 |
 | 5 | 플랫폼 선정 | 자동 재검토(`platform-scout`) + 단일 go/no-go | 1단계 가결정 확정(`platform.confirmed`/`verified`) + `platform-notes.md` | 완료 |
-| 6 | 집필 | `prose-writer` ↔ `editor-critic` | 회차 원고 | 미착수 |
+| 6 | 집필 | 집필(단일 세션, 서브에이전트 위임 없음) + 필요시 `worldbuilder-update`/`plot-architect-update`/`character-designer-update` | 회차 원고 + 누적 요약(`summaries.md`, 떡밥 추적 표 포함) | 진행 중 |
 | 7 | 게시 필수요소 | `publish-assistant` | 소개글/태그/표지문구 | 미착수 |
 | 8 | 게시 | `publish-assistant` + 로컬 브라우저 | 게시 체크리스트 실행 | 미착수 |
 | 9 | 관리 | (스킬) | `stats.md` | 미착수 |
